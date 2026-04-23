@@ -1,0 +1,18 @@
+# homelab-update---
+- name: Vollständiges System-Update aller Nodes und Container
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Paketlisten aktualisieren
+      apt:
+        update_cache: yes
+
+    - name: System-Upgrades installieren
+      apt:
+        upgrade: dist
+
+    - name: Pakete aufraeumen
+      apt:
+        autoremove: yes
+        purge: yes
